@@ -15,4 +15,4 @@ mysql_server_install:
 mysql_service:
   service.running:
     - name: mysqld
-    - enabled: true
+    - enable: true
