@@ -11,3 +11,8 @@ mysql_server_install:
       - mysql-connector-python
     - require:
       - pkg: mysql_repo_install
+
+mysql_service:
+  service.running:
+    - name: mysqld
+    - enabled: true
