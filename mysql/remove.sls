@@ -10,6 +10,8 @@ mysql_server_remove:
       - mysql-community-server
       - mysql-community-client
       - mysql-connector-python
+      - mysql-community-libs
+      - mysql-community-common
       - MySQL-python
     - require:
       - service: mysql_service_stopped
@@ -22,4 +24,7 @@ mysql_data_dir_remove:
   file.absent:
     - name: /var/lib/mysql
 
+mysql_share_directory:
+  file.absent:
+    - name: /usr/share/mysql
 
