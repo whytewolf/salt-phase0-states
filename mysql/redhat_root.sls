@@ -1,4 +1,4 @@
-{% set temp_password = salt.cmd.run(cmd="grep 'temporary password' /var/log/mysqld.log | awk '{print \$NF}'",python_shell=true)%}
+{% set temp_password = salt.cmd.shell(cmd="grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'")%}
 
 mysql_password:
   test.show_notification:
