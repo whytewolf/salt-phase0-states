@@ -9,6 +9,7 @@ mysql_server_install:
       - mysql-community-server
       - mysql-community-client
       - mysql-connector-python
+      - MySQL-python
     - require:
       - pkg: mysql_repo_install
 

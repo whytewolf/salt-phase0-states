@@ -10,6 +10,7 @@ mysql_server_remove:
       - mysql-community-server
       - mysql-community-client
       - mysql-connector-python
+      - MySQL-python
     - require:
       - service: mysql_service_stopped
 
