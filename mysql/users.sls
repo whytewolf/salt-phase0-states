@@ -2,9 +2,6 @@
 {% for user_pillar in user_pillars %}
 {% set users = salt.pillar.get(user_pillar,{}) %}
 {% for user in users%}
-{{user}}
-
-{#
 mysql_{{user['username']}}:
   mysql_user.present:
     - name: {{user['username']}}
@@ -17,6 +14,6 @@ mysql_{{user['username']}}_{{grant['databse']}}_{{grant['grant']}}:
     - grant: {{grant['grant']}}
     - database: {{grant['database']}}
     - user: {{user['username']}}
-{%endfor%}#}
+{%endfor%}
 {%endfor%}
 {%endfor%}
