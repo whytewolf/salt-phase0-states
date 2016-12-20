@@ -23,16 +23,26 @@ mysql_users:
       - grant: 'select,update'
         database: 'user2.*'
 #}
+
+{#pull mysql_users list out of mysql_core#}
 {% set user_pillars = salt.pillar.get('mysql_core:users_pillars',['mysql_users']) %}
+{#loop through mysql_users list#}
 {% for user_pillar in user_pillars %}
+{#pull this iteration of mysql_users from pillar#}
 {% set users = salt.pillar.get(user_pillar,{}) %}
+{#loop though the user list#}
 {% for user in users%}
+# user {{user['username']}}
+# {{user}}
+
+# install user into mysql
 mysql_{{user['username']}}:
   mysql_user.present:
     - name: {{user['username']}}
     - password: '{{user['password']}}'
     - host: '{{user['host']}}'
 
+# run through grants for user
 {% for grant in user['grants'] %}
 mysql_{{user['username']}}_{{grant['database']}}_{{grant['grant']}}:
   mysql_grants.present:
