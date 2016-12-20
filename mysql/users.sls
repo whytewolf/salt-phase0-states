@@ -1,7 +1,7 @@
 {% set user_pillars = salt.pillar.get('mysql_core:users_pillars',['mysql_users']) %}
 {% for user_pillar in user_pillars %}
 {% set users = salt.pillar.get(user_pillar,{}) %}
-{% for name,user in users%}
+{% for user in users%}
 {{user}}
 
 {#
