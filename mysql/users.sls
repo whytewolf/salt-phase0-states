@@ -16,6 +16,6 @@ mysql_{{user['username']}}_{{grant['databse']}}_{{grant['grant']}}:
     - grant: {{grant['grant']}}
     - database: {{grant['database']}}
     - user: {{user['username']}}
-{%endfor%}
 {%endfor%}#}
+{%endfor%}
 {%endfor%}
