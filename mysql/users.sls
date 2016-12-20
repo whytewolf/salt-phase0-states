@@ -9,7 +9,7 @@ mysql_{{user['username']}}:
     - host: '{{user['host']}}'
 
 {% for grant in user['grants'] %}
-mysql_{{user['username']}}_{{grant['databse']}}_{{grant['grant']}}:
+mysql_{{user['username']}}_{{grant['database']}}_{{grant['grant']}}:
   mysql_grant.present:
     - grant: {{grant['grant']}}
     - database: {{grant['database']}}
