@@ -13,7 +13,16 @@ mysql_server_install:
     - require:
       - pkg: mysql_repo_install
 
+mysql_config_file:
+  file.managed:
+    - name: /etc/my.cnf.d/my.cnf
+    - source: salt://mysql/files/my.cnf.jinja
+    - template: jinja
+
 mysql_service:
   service.running:
     - name: mysqld
     - enable: true
+    - watch:
+      - file: mysql_config_file
+      - pkg: mysql_server_install

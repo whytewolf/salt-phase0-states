@@ -28,3 +28,10 @@ mysql_share_directory:
   file.absent:
     - name: /usr/share/mysql
 
+mysql_config_directory:
+  file.absent:
+    - name: /etc/my.cnf.d
+
+mysql_config_file:
+  file.absent:
+    - name: /etc/my.cnf
