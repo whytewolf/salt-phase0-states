@@ -10,7 +10,7 @@ mysql_{{user['username']}}:
 
 {% for grant in user['grants'] %}
 mysql_{{user['username']}}_{{grant['database']}}_{{grant['grant']}}:
-  mysql_grant.present:
+  mysql_grants.present:
     - grant: '{{grant['grant']}}'
     - database: '{{grant['database']}}'
     - user: {{user['username']}}
