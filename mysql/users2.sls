@@ -39,6 +39,6 @@ mysql_users:
 {#loop though the user list#}
 {% for user in users%}
 # {{user}}
-{%set user = user[user]['mysql']%}
+{%set user = users[user]['mysql']%}
 {{user}}
 {%endfor%}
