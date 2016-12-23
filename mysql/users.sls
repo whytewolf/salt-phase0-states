@@ -45,7 +45,7 @@ mysql_{{user['username']}}:
     - host: '{{user['host']}}'
 # run through grants for user
 {% for grant in user['grants'] %}
-mysql_{{user['username']}}_{{grant['database']}}_{{grant['grant']}}:
+mysql_grant_{{user['username']}}_{{grant['database']}}_{{grant['grant']}}:
   mysql_grants.present:
     - grant: '{{grant['grant']}}'
     - database: '{{grant['database']}}'
