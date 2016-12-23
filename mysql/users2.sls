@@ -35,5 +35,5 @@ mysql_users:
 {#loop though the user list#}
 {% for user in users%}
 # {{user}}
-{{users[user]}}
+{{users[user]['mysql']}}
 {%endfor%}
