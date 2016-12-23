@@ -10,18 +10,22 @@ mysql_core:
     - mysql_users
 
 mysql_users:
-  - username: root
-    host: '%'
-    password: 'no a password'
-    grants:
-      - grant: all
-        database: '*.*'
-  - username: user2
-    host: 'localhost'
-    password: 'no a password'
-    grants:
-      - grant: 'select,update'
-        database: 'user2.*'
+  root:
+    mysql:
+      username: root
+      host: '%'
+      password: 'no a password'
+      grants:
+        - grant: all
+          database: '*.*'
+  user2:
+    mysql:
+      username: user2
+      host: 'localhost'
+      password: 'no a password'
+      grants:
+        - grant: 'select,update'
+          database: 'user2.*'
 #}
 
 {#pull mysql_users list out of mysql_core#}
@@ -35,5 +39,6 @@ mysql_users:
 {#loop though the user list#}
 {% for user in users%}
 # {{user}}
-{{users[user]['mysql']}}
+{%set user = user[user]['mysql']%}
+{{user}}
 {%endfor%}
