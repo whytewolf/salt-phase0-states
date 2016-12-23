@@ -31,7 +31,9 @@ mysql_users:
 {#pull this iteration of mysql_users from pillar#}
 {% set user_pillar = 'mysql_users2'%}
 {% set users = salt.pillar.get(user_pillar,{}) %}
+{{users}}
 {#loop though the user list#}
 {% for user in users%}
 # {{user}}
+
 {%endfor%}
