@@ -32,24 +32,26 @@ mysql_users:
 {% set users = salt.pillar.get(user_pillar,{}) %}
 {#loop though the user list#}
 {% for user in users%}
-# user {{user['username']}}
+{#pull the user dict out of the user object so we don't have to worry about other nastyness#}
+{%set user = users[user]['mysql']%}
+
 # {{user}}
 
 # install user into mysql
-mysql_{{user['username']}}:
+{#mysql_{{user['username']}}:
   mysql_user.present:
     - name: {{user['username']}}
     - password: '{{user['password']}}'
     - host: '{{user['host']}}'
-
+    #}
 # run through grants for user
-{% for grant in user['grants'] %}
+{#{% for grant in user['grants'] %}
 mysql_{{user['username']}}_{{grant['database']}}_{{grant['grant']}}:
   mysql_grants.present:
     - grant: '{{grant['grant']}}'
     - database: '{{grant['database']}}'
     - user: {{user['username']}}
     - host: '{{user['host']}}'
-{%endfor%}
+{%endfor%}#}
 {%endfor%}
 {%endfor%}
