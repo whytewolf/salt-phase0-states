@@ -29,3 +29,9 @@ mysql_users:
     - tgt: 'master-mom'
     - sls: 
       - mysql.users
+
+mysql_databases:
+  salt.state:
+    - tgt: 'master-mom'
+    - sls: 
+      - mysql.databases
