@@ -23,7 +23,7 @@ openstack_dbs:
 {#pull databse list from mysql_core#}
 {% set db_lol = salt.pillar.get('mysql_core:db_lists',['databases']) %}
 {% for db_list in db_lol %}
-{% for database in salt.pillar.get(db_list,'mysql')%}
+{% for database in salt.pillar.get(db_list,['mysql'])%}
 mysql_database_{{database}}:
   mysql_database.present:
     - name: {{database}}
