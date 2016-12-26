@@ -1,5 +1,5 @@
 bind_uninstall:
-  pkg.remove:
+  pkg.removed:
     - pkgs:
       - bind
       - bind-utils
