@@ -14,4 +14,4 @@ def _rndc_cmd():
 
 def reload():
     cmd = '{0} reload' . format(_rndc_cmd())
-    return __salt__['cmd.run'](cmd).split()
+    return __salt__['cmd.run'](cmd)
