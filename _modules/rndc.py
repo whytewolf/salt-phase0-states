@@ -9,7 +9,9 @@ def __virtual__():
         return(False, 'the rndc execution module cannot be loaded: rndc is not installed')
     return true
 
+def _rndc_cmd():
+    return salt.utils.which('rndc')
+
 def reload():
-    try:
-        salt['cmd.run']('rndc reload')
-    return True
+    cmd = '{0} reload' . format(_rndc_cmd())
+    return salt['cmd.run'](cmd).split()
