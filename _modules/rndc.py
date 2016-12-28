@@ -13,7 +13,7 @@ def _rndc_cmd():
     return salt.utils.which('rndc')
 
 def _add_option(cmd,option):
-    return cmd . ' {0}' . format(option)
+    return cmd ~ ' {0}' . format(option)
 
 
 def reload(server=None, key=None):
