@@ -12,6 +12,11 @@ def __virtual__():
 def _rndc_cmd():
     return salt.utils.which('rndc')
 
-def reload():
-    cmd = '{0} reload' . format(_rndc_cmd())
+def _add_option(cmd,option):
+    return cmd . ' {0}' . format(option)
+
+
+def reload(server=None, key=None):
+    cmd = '{0}' . format(_rndc_cmd())
+    cmd = _add_option(cmd,'reload')
     return __salt__['cmd.run'](cmd)
