@@ -7,7 +7,7 @@ from salt.ext import six
 def __virtual__():
     if not salt.utils.which('rndc'):
         return(False, 'the rndc execution module cannot be loaded: rndc is not installed')
-    return true
+    return True
 
 def _rndc_cmd():
     return salt.utils.which('rndc')
