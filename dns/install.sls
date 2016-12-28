@@ -1,4 +1,4 @@
-
+# Copyright Thomas "Whytewolf" Phipps 2016
 
 # install bind and utils
 bind_install:
