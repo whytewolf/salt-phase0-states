@@ -1,6 +1,8 @@
 remove_user_tools:
   pkg.removed:
     - pkgs:
-      - vim
+      - vim-enhanced
+      - vim-common
+      - vim-filesystem
       - lsof
 

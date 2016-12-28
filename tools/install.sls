@@ -2,5 +2,5 @@ tools:
   pkg.latest:
     - pkgs:
       - git
-      - vim
+      - vim-enhanced
       - lsof
