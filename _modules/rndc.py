@@ -25,7 +25,7 @@ def status(server=None,key=None):
     return __salt__['cmd.run'](cmd).split
 
 
-def reload(zone=None,class=None,view=None,server=None, key=None):
+def reload(zone=None,view=None,server=None, key=None):
     cmd = '{0}'.format(_rndc_cmd())
     if server is not None:
         cmd = _add_option(cmd,'-s {0}'.format(server))
@@ -34,8 +34,6 @@ def reload(zone=None,class=None,view=None,server=None, key=None):
     cmd = _add_option(cmd,'reload')
     if zone is not None:
         cmd = _add_option(cmd,zone)
-    if class is not None:
-        cmd = _add_option(cmd,class)
     if view is not None:
-        cmd - _add_option(cmd,view)
+        cmd - _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
