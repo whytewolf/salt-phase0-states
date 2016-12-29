@@ -15,25 +15,43 @@ def _rndc_cmd():
 def _add_option(cmd,option):
     return cmd + ' {0}'.format(option)
 
-def status(server=None,key=None):
+def _auth_options(server=None,key=None):
     cmd = '{0}'.format(_rndc_cmd())
     if server is not None:
         cmd = _add_option(cmd,'-s {0}'.format(server))
     if key is not None:
         cmd = _add_option(cmd,'-k {0}'.format(key))
+    return cmd
+
+
+def status(server=None,key=None):
+    cmd = _auth_options(server,key)
     cmd = _add_option(cmd,'status')
     return __salt__['cmd.run'](cmd)
 
 
 def reload(zone=None,view=None,server=None, key=None):
-    cmd = '{0}'.format(_rndc_cmd())
-    if server is not None:
-        cmd = _add_option(cmd,'-s {0}'.format(server))
-    if key is not None:
-        cmd = _add_option(cmd,'-k {0}'.format(key))
+    cmd = _auth_options(server,key)
     cmd = _add_option(cmd,'reload')
     if zone is not None:
         cmd = _add_option(cmd,zone)
     if view is not None:
         cmd - _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
+
+def refresh(zone,view=None,server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'refresh')
+    cmd = _add_option(cmd,zone)
+    if view is not None:
+        cmd - _add_option(cmd,'in {0}'.format(view))
+    return __salt__['cmd.run'](cmd)
+
+def retransfer(zone,view=None,server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'retransfer')
+    cmd = _add_option(cmd,zone)
+    if view is not None:
+        cmd - _add_option(cmd,'in {0}'.format(view))
+    return __salt__['cmd.run'](cmd)
+
