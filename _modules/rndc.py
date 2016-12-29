@@ -98,3 +98,11 @@ def sync(zone=None,clean=False,view=None,server=None,key=None):
         cmd - _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
+def notify(zone,view=None,server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'notify')
+    cmd = _add_option(cmd,zone)
+    if view is not None:
+        cmd - _add_option(cmd,'in {0}'.format(view))
+    return __salt__['cmd.run'](cmd)
+
