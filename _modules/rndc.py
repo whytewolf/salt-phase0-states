@@ -1,6 +1,4 @@
 import salt.utils
-import salt.utils
-from salt.state import STATE_INTERNAL_KEYWORDS as _STATE_INTERNAL_KEYWORDS
 from salt.exceptions import SaltException
 from salt.ext import six
 
