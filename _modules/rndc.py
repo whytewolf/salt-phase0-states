@@ -16,7 +16,13 @@ def _add_option(cmd,option):
     return cmd + ' {0}'.format(option)
 
 
-def reload(server=None, key=None):
+def reload(zone=None,server=None, key=None):
     cmd = '{0}'.format(_rndc_cmd())
+    if server is not None:
+        cmd = _add_option(cmd,'-s {0}'.format(server))
+    if key is not None:
+        cmd = _add_option(cmd,'-k {0}'.format(key))
     cmd = _add_option(cmd,'reload')
+    if zone is not None:
+        cmd = _add_option(cmd,zone)
     return __salt__['cmd.run'](cmd)
