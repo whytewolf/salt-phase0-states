@@ -1,3 +1,4 @@
+import os
 import salt.utils
 from salt.exceptions import SaltException
 from salt.ext import six
@@ -147,4 +148,4 @@ def stop(server=None,key=None):
     cmd = _auth_options(server,key)
     cmd = _add_option(cmd,'stop -p')
     pid = __salt__['cmd.run'](cmd)
-    return pid
+    return pid['pid']
