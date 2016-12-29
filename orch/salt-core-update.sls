@@ -1,10 +1,10 @@
 fileserver-update:
   salt.runner:
-    - fileserver.update
+    - name: fileserver.update
 
 git_pillar-update:
   salt.runner:
-    - git_pillar.update
+    - name: git_pillar.update
 
 pillar_refresh:
   salt.function:
