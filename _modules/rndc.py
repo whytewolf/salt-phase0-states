@@ -116,4 +116,9 @@ def stats(server=None,key=None):
     cmd = _add_option(cmd,'stats')
     return __salt__['cmd.run'](cmd)
 
-
+def querylog(status='toggle',server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'querylog')
+    if status.lower() != 'toggle':
+        cmd = _add_option(cmd,status)
+    return __salt__['cmd.run'](cmd)
