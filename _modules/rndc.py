@@ -34,7 +34,7 @@ def reload(zone=None,view=None,server=None, key=None):
     if zone is not None:
         cmd = _add_option(cmd,zone)
     if view is not None:
-        cmd - _add_option(cmd,'in {0}'.format(view))
+        cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
 def refresh(zone,view=None,server=None,key=None):
@@ -42,7 +42,7 @@ def refresh(zone,view=None,server=None,key=None):
     cmd = _add_option(cmd,'refresh')
     cmd = _add_option(cmd,zone)
     if view is not None:
-        cmd - _add_option(cmd,'in {0}'.format(view))
+        cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
 def retransfer(zone,view=None,server=None,key=None):
@@ -50,7 +50,7 @@ def retransfer(zone,view=None,server=None,key=None):
     cmd = _add_option(cmd,'retransfer')
     cmd = _add_option(cmd,zone)
     if view is not None:
-        cmd - _add_option(cmd,'in {0}'.format(view))
+        cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
 def sign(zone,view=None,server=None,key=None):
@@ -58,7 +58,7 @@ def sign(zone,view=None,server=None,key=None):
     cmd = _add_option(cmd,'sign')
     cmd = _add_option(cmd,zone)
     if view is not None:
-        cmd - _add_option(cmd,'in {0}'.format(view))
+        cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
 def loadkeys(zone,view=None,server=None,key=None):
@@ -66,7 +66,7 @@ def loadkeys(zone,view=None,server=None,key=None):
     cmd = _add_option(cmd,'loadkeys')
     cmd = _add_option(cmd,zone)
     if view is not None:
-        cmd - _add_option(cmd,'in {0}'.format(view))
+        cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
 def freeze(zone=None,view=None,server=None,key=None):
@@ -75,7 +75,7 @@ def freeze(zone=None,view=None,server=None,key=None):
     if zone is not None:
         cmd = _add_option(cmd,zone)
     if view is not None:
-        cmd - _add_option(cmd,'in {0}'.format(view))
+        cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
 def thaw(zone=None,view=None,server=None,key=None):
@@ -84,7 +84,7 @@ def thaw(zone=None,view=None,server=None,key=None):
     if zone is not None:
         cmd = _add_option(cmd,zone)
     if view is not None:
-        cmd - _add_option(cmd,'in {0}'.format(view))
+        cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
 def sync(zone=None,clean=False,view=None,server=None,key=None):
@@ -95,7 +95,7 @@ def sync(zone=None,clean=False,view=None,server=None,key=None):
     if zone is not None:
         cmd = _add_option(cmd,zone)
     if view is not None:
-        cmd - _add_option(cmd,'in {0}'.format(view))
+        cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
 def notify(zone,view=None,server=None,key=None):
@@ -103,7 +103,7 @@ def notify(zone,view=None,server=None,key=None):
     cmd = _add_option(cmd,'notify')
     cmd = _add_option(cmd,zone)
     if view is not None:
-        cmd - _add_option(cmd,'in {0}'.format(view))
+        cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
 def reconfig(server=None,key=None):
@@ -121,4 +121,17 @@ def querylog(status='toggle',server=None,key=None):
     cmd = _add_option(cmd,'querylog')
     if status.lower() != 'toggle':
         cmd = _add_option(cmd,status)
+    return __salt__['cmd.run'](cmd)
+
+def dumpdb(db='cache',view=None,server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'dumpdb')
+    if db.lower() == 'zone':
+        cmd = _add_option(cmd,'--zone')
+    elif db.lower() == 'all':
+        cmd = _add_option(cmd,'--all')
+    else:
+        cmd = _add_option(cmd,'--cache')
+    if view is not None:
+        cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
