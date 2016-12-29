@@ -22,7 +22,7 @@ def status(server=None,key=None):
     if key is not None:
         cmd = _add_option(cmd,'-k {0}'.format(key))
     cmd = _add_option(cmd,'status')
-    return __salt__['cmd.run'](cmd).split
+    return __salt__['cmd.run'](cmd).split()
 
 
 def reload(zone=None,view=None,server=None, key=None):
