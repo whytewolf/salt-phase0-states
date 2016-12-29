@@ -15,3 +15,9 @@ sync_all:
   salt.function:
     - tgt: '*'
     - name: saltutil.sync_all
+
+
+mine_update:
+  salt.function:
+    - tgt: '*'
+    - name: mine.update
