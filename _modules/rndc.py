@@ -106,3 +106,10 @@ def notify(zone,view=None,server=None,key=None):
         cmd - _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
+def reconfig(server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'reconfig')
+    return __salt__['cmd.run'](cmd)
+
+
+
