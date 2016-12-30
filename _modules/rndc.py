@@ -1,7 +1,11 @@
 import os
+import logging
 import salt.utils
 from salt.exceptions import SaltException
 from salt.ext import six
+
+log = logging.getLogger(__name__)
+
 
 def __virtual__():
     if not salt.utils.which('rndc'):
@@ -148,4 +152,5 @@ def stop(server=None,key=None):
     cmd = _auth_options(server,key)
     cmd = _add_option(cmd,'stop -p')
     pid = __salt__['cmd.run'](cmd)
-    return pid['pid']
+    log.debug(pid)
+    return pid
