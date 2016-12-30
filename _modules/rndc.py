@@ -152,5 +152,6 @@ def stop(server=None,key=None):
     cmd = _auth_options(server,key)
     cmd = _add_option(cmd,'stop -p')
     pid = __salt__['cmd.run'](cmd)
+    pid = int(pid[5:])
     log.debug(pid)
     return pid
