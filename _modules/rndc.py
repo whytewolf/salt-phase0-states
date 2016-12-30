@@ -156,7 +156,7 @@ def stop(server=None,key=None):
     flash = True
     iterator = 0
     while(flash):
-        iterator++
+        iterator=iterator+1
         try:
             os.kill(pid,0)
         except: OSError:
