@@ -153,5 +153,17 @@ def stop(server=None,key=None):
     cmd = _add_option(cmd,'stop -p')
     pid = __salt__['cmd.run'](cmd)
     pid = int(pid[5:])
-    log.debug(pid)
-    return pid
+    flash = True
+    iterator = 0
+    while(flash):
+        iterator++
+        try:
+            os.kill(pid,0)
+        except: OSError:
+            flash = False
+        if iterator == 100:
+            flash = False
+            error = True
+            log.debug('looped to long waiting for rndc stop')
+            return (False,'named service at pid {0} has not stopped'.format(pid))
+    return 'named service at pid {0} stopped'.format(pid)
