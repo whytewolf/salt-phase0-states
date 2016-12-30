@@ -153,17 +153,36 @@ def stop(server=None,key=None):
     cmd = _add_option(cmd,'stop -p')
     pid = __salt__['cmd.run'](cmd)
     pid = int(pid[5:])
-    flash = True
     iterator = 0
-    while(flash):
+    while(True):
         iterator=iterator+1
         try:
             os.kill(pid,0)
         except OSError:
-            flash = False
-        if iterator == 100:
-            flash = False
-            error = True
-            log.debug('looped to long waiting for rndc stop')
+            return 'named service at pid {0} stopped'.format(pid)
+        if iterator >= 100:
+            log.debug('too many iterations waiting for pid: {0}'.format(pid))
             return (False,'named service at pid {0} has not stopped'.format(pid))
-    return 'named service at pid {0} stopped'.format(pid)
+
+def halt(server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'halt -p')
+    pid = __salt__['cmd.run'](cmd)
+    pid = int(pid[5:])
+    iterator = 0
+    while(True):
+        iterator=iterator+1
+        try:
+            os.kill(pid,0)
+        except OSError:
+            return 'named service at pid {0} stopped'.format(pid)
+        if iterator >= 100:
+            log.debug('too many iterations waiting for pid: {0}'.format(pid))
+            return (False,'named service at pid {0} has not stopped'.format(pid))
+
+def trace(level=None,server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'trace')
+    if level is not None:
+        cmd = _add_option(cmd,level)
+    return __salt__['cmd.run'](cmd)
