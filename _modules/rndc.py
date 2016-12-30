@@ -159,7 +159,7 @@ def stop(server=None,key=None):
         iterator=iterator+1
         try:
             os.kill(pid,0)
-        except: OSError:
+        except OSError:
             flash = False
         if iterator == 100:
             flash = False
