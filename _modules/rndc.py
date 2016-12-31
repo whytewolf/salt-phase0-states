@@ -214,4 +214,23 @@ def recursing(server=None,key=None):
     cmd = _add_option(cmd,'recursing')
     return __salt__['cmd.run'](cmd)
 
+def validation(state,view=None,sserver=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'validation')
+    if state == 'on':
+        cmd = _add_option(cmd,'on')
+    elif state =='off':
+        cmd = _add_option(cmd,'off')
+    else:
+        cmd = _add_option(cmd,'check')
+    if view is not None:
+        cmd = _add_option(cmd,'in {0}'.format(view))
+    return __salt__['cmd.run'](cmd)
+
+def tsig-list(server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'tsig-list')
+    return __salt__['cmd.run'](cmd)
+
+
 
