@@ -186,3 +186,32 @@ def trace(level=None,server=None,key=None):
     if level is not None:
         cmd = _add_option(cmd,level)
     return __salt__['cmd.run'](cmd)
+
+def notrace(server=None,key=None):
+    return trace(level=0,server=server,key=key)
+
+def flush(server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'flush')
+    return __salt__['cmd.run'](cmd)
+
+def flushname(name,view=None,server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'flushname {0}'.format(name))
+    if view is not None:
+        cmd = _add_option(cmd,'in {0}'.format(view))
+    return __salt__['cmd.run'](cmd)
+
+def flushtree(name,view=None,server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'flushtree {0}'.format(name))
+    if view is not None:
+        cmd = _add_option(cmd,'in {0}'.format(view))
+    return __salt__['cmd.run'](cmd)
+
+def recursing(server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'recursing')
+    return __salt__['cmd.run'](cmd)
+
+
