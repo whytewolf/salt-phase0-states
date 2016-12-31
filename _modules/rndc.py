@@ -232,10 +232,10 @@ def tsig_list(server=None,key=None):
     cmd = _add_option(cmd,'tsig-list')
     return __salt__['cmd.run'](cmd)
 
-def tsig_delete(key,view=None,server=None,key=None):
+def tsig_delete(keyname,view=None,server=None,key=None):
     cmd = _auth_options(server,key)
     cmd = _add_option(cmd,'tsig-delete')
-    cmd = _add_option(cmd,key)
+    cmd = _add_option(cmd,keyname)
     if view is not None:
         cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
