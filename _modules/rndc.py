@@ -252,7 +252,7 @@ def addzone(zone,config,view=None,server=None,key=None):
 
 def delzone(zone,view=None,server=None,key=None):
     cmd = _auth_options(server,key)
-    cmd = _add_option(cmd,'addzone')
+    cmd = _add_option(cmd,'delzone')
     cmd = _add_option(cmd,zone)
     if view is not None:
         cmd = _add_option(cmd,'in {0}'.format(view))
