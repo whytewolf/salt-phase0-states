@@ -247,6 +247,7 @@ def addzone(zone,config,view=None,server=None,key=None):
     if view is not None:
         cmd = _add_option(cmd,'in {0}'.format(view))
     cmd = _add_option(cmd,config)
+    log.debug('cmd.run {0}'.format(cmd))
     return __salt__['cmd.run'](cmd)
 
 def delzone(zone,view=None,server=None,key=None):
