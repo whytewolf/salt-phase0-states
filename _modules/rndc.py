@@ -240,3 +240,22 @@ def tsig_delete(keyname,view=None,server=None,key=None):
         cmd = _add_option(cmd,'in {0}'.format(view))
     return __salt__['cmd.run'](cmd)
 
+def addzone(zone,config,view=None,server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'addzone')
+    cmd = _add_option(cmd,zone)
+    if view is not None:
+        cmd = _add_option(cmd,'in {0}'.format(view))
+    cmd = _add_option(cmd,config)
+    return __salt__['cmd.run'](cmd)
+
+def delzone(zone,view=None,server=None,key=None):
+    cmd = _auth_options(server,key)
+    cmd = _add_option(cmd,'addzone')
+    cmd = _add_option(cmd,zone)
+    if view is not None:
+        cmd = _add_option(cmd,'in {0}'.format(view))
+    return __salt__['cmd.run'](cmd)
+
+# TODO
+# signing function
