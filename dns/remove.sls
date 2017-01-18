@@ -7,6 +7,8 @@ bind_uninstall:
       - bind
       - bind-utils
       - bind-libs
+      - bind-license
+      - bind-libs-lite
 
 #make sure the config directory is gone
 bind_config_dir_remove:
