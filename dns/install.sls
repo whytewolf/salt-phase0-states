@@ -26,6 +26,8 @@ var_named_cleanup:
     - recurse:
       - user
       - group
+    - listen_in:
+      - service: named_service
 
 wolfcloud_dynamic_db:
   file.managed:
@@ -38,3 +40,10 @@ wolfcloud_dynamic_db:
     - defaults:
         nameserver: 10.40.0.105
         domain: wolfcloud.bad4.us
+    - listen_in:
+      - service: named_service
+
+named_service:
+  service.running:
+    - name: named
+    - enable: true
