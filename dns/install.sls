@@ -35,3 +35,6 @@ wolfcloud_dynamic_db:
     - mode: 664
     - user: named
     - group: named
+    - defaults:
+        nameserver: 10.40.0.105
+        domain: wolfcloud.bad4.us
