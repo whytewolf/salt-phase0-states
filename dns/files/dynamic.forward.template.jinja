@@ -1,0 +1,11 @@
+$TTL 604800
+{{"now"|strftime('%Y%m%d')}}
+@       IN      SOA     ns.wolfcloud.bad4.us. wolfcloud.bad4.us. (
+                     2017013001         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns.wolfcloud.bad4.us.
+ns      IN      A       10.40.0.105
