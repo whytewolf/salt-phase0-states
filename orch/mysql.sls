@@ -1,11 +1,7 @@
 fileserver_update:
   salt.runner:
-    - name: fileserver.update
-
-pillar_update:
-  salt.function:
-    - tgt: '*'
-    - name: saltutil.pillar_refresh
+    - name: state.orch
+    - mods: orch.salt-core-update
 
 mysql_install_1:
   salt.state:
