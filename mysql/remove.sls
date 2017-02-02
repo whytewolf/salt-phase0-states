@@ -45,3 +45,9 @@ mysql_config_directory:
 mysql_config_file:
   file.absent:
     - name: /etc/my.cnf
+
+mysql_repos_cruft:
+  file.absent:
+    - names:
+      - /etc/yum.repos.d/mysql-community.repo
+      - /etc/yum.repos.d/mysql-community-source.repo
