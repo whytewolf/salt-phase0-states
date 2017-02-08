@@ -32,7 +32,7 @@ mysql_config_file:
     - name: /etc/my.cnf
     - source: salt://mysql/files/my.cnf.jinja
     - template: jinja
-    - watch_in:
+    - listen_in:
       - service: mysql_service
 {%endif%}
 
@@ -41,5 +41,5 @@ mysql_service:
   service.running:
     - name: mysqld
     - enable: true
-    - watch:
+    - listen:
       - pkg: mysql_server_install
