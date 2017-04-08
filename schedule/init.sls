@@ -1,4 +1,4 @@
-cook the books:
+highstate scheduled job:
   schedule.present:
     - function: state.apply
     - seconds: 1800
