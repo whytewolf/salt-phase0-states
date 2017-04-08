@@ -53,17 +53,17 @@ mysql_repos_cruft:
       - /etc/yum.repos.d/mysql-community-source.repo
 
 remove_mysql_dyn_top_grain_mysql.maint:
-  grains.list_present:
+  grains.list_absent:
     - name: installed.states
     - value: mysql.maint
 
 remove_mysql_dyn_top_grain_mysql.users:
-  grains.list_present:
+  grains.list_absent:
     - name: installed.states
     - value: mysql.users
 
 remove_mysql_dyn_top_grain_mysql.databases:
-  grains.list_present:
+  grains.list_absent:
     - name: installed.states
     - value: mysql.databases
 
