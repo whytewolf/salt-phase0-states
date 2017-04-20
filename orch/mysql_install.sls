@@ -7,19 +7,19 @@ mysql_cleanup:
   salt.state:
     - tgt: 'master-mom'
     - sls:
-      - mysql.remove
+      - mysql.removed
 
 mysql_install_1:
   salt.state:
     - tgt: 'master-mom'
     - sls: 
-      - mysql.install
+      - mysql.installed
 
 mysql_install_2:
   salt.state:
     - tgt: 'master-mom'
     - sls: 
-      - mysql.install
+      - mysql.installed
 
 mysql_redhat_password_fix:
   salt.state:
