@@ -1,7 +1,7 @@
 fileserver_update:
   salt.runner:
     - name: state.orch
-    - mods: orch.salt-core-update
+    - mods: orch.salt-update
 
 mysql_cleanup:
   salt.state:
