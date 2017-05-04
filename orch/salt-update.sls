@@ -11,11 +11,14 @@ pillar_refresh:
     - tgt: '*'
     - name: saltutil.pillar_refresh
 
-sync_all:
+minion_sync_all:
   salt.function:
     - tgt: '*'
     - name: saltutil.sync_all
 
+master_sync_all:
+  salt.runner:
+    - name: saltutil.sync_all
 
 mine_update:
   salt.function:

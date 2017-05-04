@@ -1,0 +1,17 @@
+[powerdns-auth-40]
+name=PowerDNS repository for PowerDNS Authoritative Server - version 4.0.X
+baseurl=http://repo.powerdns.com/centos/$basearch/$releasever/auth-40
+gpgkey=https://repo.powerdns.com/FD380FBB-pub.asc
+gpgcheck=1
+enabled=1
+priority=90
+includepkg=pdns*
+
+[powerdns-auth-40-debuginfo]
+name=PowerDNS repository for PowerDNS Authoritative Server - version 4.0.X debug symbols
+baseurl=http://repo.powerdns.com/centos/$basearch/$releasever/auth-40/debug
+gpgkey=https://repo.powerdns.com/FD380FBB-pub.asc
+gpgcheck=1
+enabled=0
+priority=90
+includepkg=pdns*
