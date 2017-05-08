@@ -11,3 +11,4 @@ pdns_installed:
     - pkgs:
       - pdns
       - yum-plugin-priorities
+      - pdns-backend-mysql
