@@ -6,4 +6,4 @@ highstate scheduled job:
 mysql_dyn_top_grain:
   grains.list_present:
     - name: installed.states
-    - value: schedule
+    - value: sys.schedule

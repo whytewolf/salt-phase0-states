@@ -29,7 +29,7 @@ mysql_server_install:
 mysql_config_file:
   file.managed:
     - name: /etc/my.cnf
-    - source: salt://mysql/files/my.cnf.jinja
+    - source: salt://files/etc/my.cnf.jinja
     - template: jinja
     - listen_in:
       - service: mysql_service
