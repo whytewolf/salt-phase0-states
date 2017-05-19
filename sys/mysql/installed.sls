@@ -23,18 +23,17 @@ mysql_server_install:
       - MySQL-python
     - require:
       - pkg: mysql_repo_install
+  service.running:
+    - name: mysqld
+    - enable: true
 
-{% if 1 != salt.cmd.retcode('test -f /etc/my.cnf') %}
-# our config file.
-# I did try putting this in /etc/my.cnf.d/ however apperently mysql ignores that directory. 
 mysql_config_file:
   file.managed:
     - name: /etc/my.cnf
-    - source: salt://mysql/files/my.cnf.jinja
+    - source: salt://files/etc/my.cnf.jinja
     - template: jinja
     - listen_in:
       - service: mysql_service
-{%endif%}
 
 # run our service, making sure that we restart if we change anything in the config or update packages
 mysql_service:

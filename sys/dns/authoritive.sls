@@ -4,7 +4,7 @@
 authoritive pdns repo:
   file.managed:
     - name: /etc/yum.repos.d/powerdns-auth-40.repo
-    - source: salt://dns/files/auth.repo
+    - source: salt://files/etc/yum.repos.d/powerdns-auth-40.repo
 
 pdns_installed:
   pkg.installed:
