@@ -6,4 +6,4 @@ highstate scheduled job:
 schedule_dyn_top_grain:
   grains.list_present:
     - name: installed.states
-    - value: sys.schedule
+    - value: sys.maint.highstate
