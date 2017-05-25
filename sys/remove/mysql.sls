@@ -55,15 +55,15 @@ mysql_repos_cruft:
 remove_mysql_dyn_top_grain_mysql.maint:
   grains.list_absent:
     - name: installed.states
-    - value: mysql.maint
+    - value: sys.maint.mysql
 
 remove_mysql_dyn_top_grain_mysql.users:
   grains.list_absent:
     - name: installed.states
-    - value: mysql.users
+    - value: sys.other.mysql.users
 
 remove_mysql_dyn_top_grain_mysql.databases:
   grains.list_absent:
     - name: installed.states
-    - value: mysql.databases
+    - value: sys.other.mysql.databases
 
