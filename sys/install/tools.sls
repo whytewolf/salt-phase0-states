@@ -4,3 +4,7 @@ tools:
       - git
       - vim-enhanced
       - lsof
+      - bash
+      - zsh
+      - tmux
+      - yum
