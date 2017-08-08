@@ -8,3 +8,5 @@ tools:
       - zsh
       - tmux
       - yum
+      - deltarpm
+      - python-deltarpm
