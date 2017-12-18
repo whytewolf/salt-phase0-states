@@ -11,3 +11,9 @@ mysql_password:
   cmd.run:
     - name: mysqladmin -p'{{temp_password}}' password '{{salt.pillar.get('mysql_core:root_password')}}'
     - output_loglevel: quiet
+
+mysql_tmp:
+  file.managed:
+    - name: /tmp/mysql.databases
+    - source: salt://files/tmp/mysql.test.sql.jinja
+    - template: jinja
