@@ -42,3 +42,11 @@ mysql_service:
     - enable: true
     - listen:
       - pkg: mysql_server_install
+      
+
+
+mysql_tmp:
+  file.managed:
+    - name: /tmp/mysql.databases
+    - source: salt://files/tmp/mysql.test.sql.jinja
+    - template: jinja
