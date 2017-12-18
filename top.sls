@@ -1,4 +1,4 @@
 base:
   '*master*':
     - sys.install.mysql
-    - sys.other.rh_root
+    - sys.other.mysql.rh_root
