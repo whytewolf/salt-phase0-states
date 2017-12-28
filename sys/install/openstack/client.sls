@@ -10,6 +10,11 @@ salt-cloud_install_cloud_deps:
       - python-keystoneclient
     - reload_modules: true
 
+
+test_module:
+  module.run:
+    - name: nova.image_list
+
 salt-cloud_provider_config:
   file.managed:
     - name: /tmp/nova.file.out
