@@ -2,7 +2,6 @@ salt-cloud_install_cloud:
   pkg.installed:
     - pkgs:
       - salt-cloud
-      - python2-pip
 
 salt-cloud_install_cloud_deps:
   pip.installed:
