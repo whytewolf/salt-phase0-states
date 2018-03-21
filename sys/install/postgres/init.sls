@@ -13,7 +13,7 @@ postgres-install-packages:
 
 postgresql-10-initdb:
   cmd.run:
-    - name: '/pgsql-10/bin/postgresql-10-setup initdb'
+    - name: '/usr/pgsql-10/bin/postgresql-10-setup initdb'
     - creates: /var/lib/pgsql/10/data/PG_VERSION
 
 
