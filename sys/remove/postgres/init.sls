@@ -7,3 +7,7 @@ postgres-remove-packages:
       - postgresql10-plpython
       - postgresql10-server
       - postgresql10-libs
+
+postgres-remove-datadir:
+  file.absent:
+    - name: /var/lib/pgsql

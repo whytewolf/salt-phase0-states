@@ -10,3 +10,10 @@ postgres-install-packages:
       - postgresql10-server
       - postgresql10-contrib
       - postgresql10-plpython
+
+postgresql-10-initdb:
+  cmd.run:
+    - name: '/pgsql-10/bin/postgresql-10-setup initdb'
+    - creates: /var/lib/pgsql/10/data/PG_VERSION
+
+
