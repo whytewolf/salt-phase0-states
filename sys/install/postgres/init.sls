@@ -22,9 +22,9 @@ postgresql-10-initdb:
 
 postgres-config-file:
   file.managed:
-    - name: /var/lib/pgsql/10/data/postgres.conf
-    - source: salt://files/var/lib/pgsql/10/data/postgres.conf
-    - templates: jinja
+    - name: /var/lib/pgsql/10/data/postgresql.conf
+    - source: salt://files/var/lib/pgsql/10/data/postgresql.conf
+    - template: jinja
     - user: postgres
     - group: postgres
     - mode: 600
@@ -36,7 +36,7 @@ postgres-hba-config-file:
   file.managed:
     - name: /var/lib/pgsql/10/data/pg_hba.conf
     - source: salt://files/var/lib/pgsql/10/data/pg_hba.conf
-    - templates: jinja
+    - template: jinja
     - user: postgres
     - group: postgres
     - mode: 600
@@ -48,7 +48,7 @@ postgres-idents-config-file:
   file.managed:
     - name: /var/lib/pgsql/10/data/pg_ident.conf
     - source: salt://files/var/lib/pgsql/10/data/pg_ident.conf
-    - templates: jinja
+    - template: jinja
     - user: postgres
     - group: postgres
     - mode: 600
