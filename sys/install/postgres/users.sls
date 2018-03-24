@@ -36,7 +36,7 @@ mysql_users:
   'encrypted': None,
   'superuser': False,
   'replication': False,
-  'groups': None
+  'groups': False
 }%}
 
 
@@ -62,6 +62,8 @@ postgres_user_{{user['username']}}:
     - encrypted: {{user['encrypted']}}
     - superuser: {{user['superuser']}}
     - replication: {{user['replication']}}
+    {% if user['groups'] != False %}
     - groups: {{user['groups']}}
+    {% endif %}
   {%endfor%}
 {%endfor%}
