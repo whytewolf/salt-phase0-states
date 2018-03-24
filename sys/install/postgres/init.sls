@@ -13,12 +13,21 @@ postgres-install-packages:
     - require:
       - pkg: postgres-install-repo
 
+#postgresql-10-initdb:
+#  cmd.run:
+#    - name: '/usr/pgsql-10/bin/postgresql-10-setup initdb'
+#    - creates: /var/lib/pgsql/10/data/PG_VERSION
+#    - require:
+#      - pkg: postgres-install-packages
+
 postgresql-10-initdb:
-  cmd.run:
-    - name: '/usr/pgsql-10/bin/postgresql-10-setup initdb'
-    - creates: /var/lib/pgsql/10/data/PG_VERSION
-    - require:
-      - pkg: postgres-install-packages
+  postgres_initdb.present:
+    - name: /var/lib/pgsql/10/data
+    - user: {{salt.config.get('postgres.user','postgres')}}
+    - password: {{salt.config.get('postgres.pass','')}}
+    - auth: password
+    - runas: {{salt.config.get('postgres.user','postgres')}}
+
 
 postgres-config-file:
   file.managed:
