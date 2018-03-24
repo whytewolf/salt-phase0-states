@@ -39,7 +39,7 @@ postgres-config-file:
     - mode: 600
     - require:
       - pkg: postgres-install-packages
-      - cmd: postgresql-10-initdb
+      - postgres_initdb: postgresql-10-initdb
 
 postgres-hba-config-file:
   file.managed:
@@ -51,7 +51,7 @@ postgres-hba-config-file:
     - mode: 600
     - require:
       - pkg: postgres-install-packages
-      - cmd: postgresql-10-initdb
+      - postgres_initdb: postgresql-10-initdb
 
 postgres-idents-config-file:
   file.managed:
@@ -63,7 +63,7 @@ postgres-idents-config-file:
     - mode: 600
     - require:
       - pkg: postgres-install-packages
-      - cmd: postgresql-10-initdb
+      - postgres_initdb: postgresql-10-initdb
 
 postgres-start-server:
   service.running:
