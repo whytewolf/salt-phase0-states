@@ -1,4 +1,5 @@
-{%for db,file in salt.pillar.get('mysql_schemes').items() %}
+{% for item in salt.pillar.get('mysql_schemes') %}
+{% set db,files = item.items() %}
 
 install_mysql_schemes:
   mysql_query.run_file:
