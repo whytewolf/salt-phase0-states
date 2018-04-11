@@ -7,8 +7,8 @@ auth-repo:
     - source: https://repo.powerdns.com/repo-files/centos-rec-41.repo
     - skip_verify: True
 
-#install-powerdns-auth:
-  #  pkg.installed:
-    #    - pkgs:
-      # - pdns-recurse
+install-powerdns-auth:
+  pkg.installed:
+    - pkgs:
+      - pdns-recurse
 
