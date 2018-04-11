@@ -10,5 +10,5 @@ auth-repo:
 install-powerdns-auth:
   pkg.installed:
     - pkgs:
-      - pdns-recurse
+      - pdns-recursor
 
